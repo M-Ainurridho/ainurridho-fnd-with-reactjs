@@ -1,0 +1,86 @@
+/* Utils */
+.btn-primary {
+   background-color: var(--primary);
+   padding: 10px;
+
+   border-width: 0;
+}
+
+.btn-success {
+   background-color: var(--success);
+   padding: 10px;
+
+   border-width: 0;
+}
+
+.btn-full {
+   width: 100% !important;
+}
+
+.pointer {
+   cursor: pointer !important;
+}
+
+.shadow-sm-light {
+   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+.shadow-sm-dark {
+   box-shadow: 2px 2px 3px rgb(255, 255, 255, 0.3) !important;
+}
+
+.mt-1 {
+   margin-top: 5px !important;
+}
+
+.mt-2 {
+   margin-top: 10px !important;
+}
+
+.p-1 {
+   padding: 5px !important;
+}
+
+.p-2 {
+   padding: 10px !important;
+}
+
+.radius-1 {
+   border-radius: 10px !important;
+}
+
+.radius-2 {
+   border-radius: 15px !important;
+}
+
+.radius-3 {
+   border-radius: 20px;
+}
+
+.text-white {
+   color: #fff !important;
+}
+
+.text-decoration-none {
+   text-decoration: none !important;
+}
+
+.navbar-light {
+   background-color: #fafafa !important;
+   color: #0f172a !important;
+}
+
+.navbar-dark {
+   background-color: #0f172a !important;
+   color: #fafafa !important;
+}
+
+.bg-light {
+   background-color: #fafafa !important;
+   color: #1e293b !important;
+}
+
+.bg-dark {
+   background-color: #1e293b !important;
+   color: #fafafa !important;
+}
