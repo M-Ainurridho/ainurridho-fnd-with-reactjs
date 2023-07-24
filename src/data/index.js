@@ -4,7 +4,7 @@ export const allMenu = [
       name: "Nasi Uduk",
       price: 11000,
       discount: 0,
-      category: "food",
+      category: "foods",
       image: "nasi-uduk.jpg",
    },
    {
@@ -12,7 +12,7 @@ export const allMenu = [
       name: "Bubur Ayam",
       price: 10000,
       discount: 0,
-      category: "food",
+      category: "foods",
       image: "bubur-ayam.jpg",
    },
    {
@@ -20,7 +20,7 @@ export const allMenu = [
       name: "Pecel Lele",
       price: 12000,
       discount: 0,
-      category: "food",
+      category: "foods",
       image: "pecel-lele.jpg",
    },
    {
@@ -28,7 +28,7 @@ export const allMenu = [
       name: "Lontong Sayur",
       price: 15000,
       discount: 0,
-      category: "food",
+      category: "foods",
       image: "lontong-sayur.jpg",
    },
    {
@@ -36,7 +36,7 @@ export const allMenu = [
       name: "Es Teh",
       price: 5000,
       discount: 0,
-      category: "drink",
+      category: "drinks",
       image: "es-teh.jpg",
    },
    {
@@ -44,7 +44,7 @@ export const allMenu = [
       name: "Jus Jeruk",
       price: 7000,
       discount: 0,
-      category: "drink",
+      category: "drinks",
       image: "jus-jeruk.jpg",
    },
    {
@@ -52,7 +52,7 @@ export const allMenu = [
       name: "Air Mineral",
       price: 3000,
       discount: 0,
-      category: "drink",
+      category: "drinks",
       image: "air-mineral.jpg",
    },
    {
@@ -60,7 +60,7 @@ export const allMenu = [
       name: "Jus Alpukat",
       price: 10000,
       discount: 0,
-      category: "drink",
+      category: "drinks",
       image: "jus-alpukat.jpg",
    },
 ];

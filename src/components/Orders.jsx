@@ -1,41 +1,29 @@
-import { useContext, useState, useEffect } from "react";
-import { MenuContext } from "../App";
-import { allMenu } from "../data";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Orders = () => {
-   const { order } = useContext(MenuContext);
+   const orderRedux = useSelector((state) => state.orders);
    const [orders, setOrders] = useState([]);
-   const [num, setNum] = useState(0);
    const [total, setTotal] = useState(0);
 
    useEffect(() => {
-      if (order?.id) {
-         const data = allMenu.find((menu) => {
-            if (menu.id == order.id) {
-               return menu;
-            }
-         });
+      if (orderRedux?.id) {
+         const { id, name, price, count, category, image } = orderRedux;
 
-         const { id, name, price, discount, category, image } = data;
+         if (orders.length > 0) {
+            const order = orders.find((o) => o.id === id);
 
-         const sementara = orders.find((menu) => {
-            if (menu.id === order.id) {
-               menu.count = order.count;
-               setTotal(total + menu.price);
-               return true;
+            if (order) {
+               order.count = count;
             } else {
-               return false;
+               setOrders((value) => [...value, { id, name, price, count, category, image }]);
             }
-         });
-
-         if (!sementara || false) {
-            setOrders((value) => [...value, { id, name, price, discount, category, image, count: order.count }]);
-            setTotal(total + price);
+         } else {
+            setOrders((value) => [...value, { id, name, price, count, category, image }]);
          }
+         setTotal(total + price);
       }
-   }, [order]);
-
-   console.log(orders);
+   }, [orderRedux]);
 
    const UIOrder = orders.map((order, i) => {
       return (
@@ -53,12 +41,12 @@ const Orders = () => {
    });
 
    return (
-      <section className="order">
+      <section className="order bg-lime-300 basis-1/4">
          <div className="order-items radius-1">
             <h3 className="order-header">Keranjang Belanja</h3>
             {UIOrder}
             <div className="order-total">
-               <p>Total Harga : {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total)}</p>
+               <p>Harga : {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total)}</p>
                <button className="btn-primary btn-full radius-1 pointer" onClick={() => window.location.reload()}>
                   Bayar Sekarang
                </button>

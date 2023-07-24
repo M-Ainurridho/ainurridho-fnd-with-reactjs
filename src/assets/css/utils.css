@@ -84,3 +84,7 @@
    background-color: #1e293b !important;
    color: #fafafa !important;
 }
+
+.inline-block {
+   display: inline-block !important;
+}

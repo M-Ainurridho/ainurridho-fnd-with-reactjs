@@ -1,15 +1,15 @@
-import { useContext } from "react";
-import { MenuContext } from "../App";
+import { useDispatch } from "react-redux";
+import { changeMenu } from "../redux/reducers";
 
 const Sidebar = () => {
-   const { changeMenu } = useContext(MenuContext);
+   const dispatch = useDispatch();
 
    return (
-      <section className="sidebar">
+      <section className="sidebar bg-red-100 basis-1/5">
          <ul className="sidebar-menu">
-            <li onClick={() => changeMenu("")}>All</li>
-            <li onClick={() => changeMenu("food")}>Makanan</li>
-            <li onClick={() => changeMenu("drink")}>Minuman</li>
+            <li onClick={() => dispatch(changeMenu("all"))}>All Menu</li>
+            {/* <li onClick={() => dispatch(changeMenu("foods"))}>Makanan</li>
+            <li onClick={() => dispatch(changeMenu("drinks"))}>Minuman</li> */}
          </ul>
       </section>
    );

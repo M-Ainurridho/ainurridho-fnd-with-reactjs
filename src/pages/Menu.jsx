@@ -1,17 +1,11 @@
 import FnD from "../components/FnD";
-import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Orders from "../components/Orders";
-import { useContext } from "react";
-import { ThemeContext } from "../App";
 
 const Menu = () => {
-   const { color } = useContext(ThemeContext);
-
    return (
       <>
-         <Navbar />
-         <main className={`bg-${color}`}>
+         <main className="flex flex-wrap my-5 justify-between container mx-auto bg-yellow-200">
             <Sidebar />
             <FnD />
             <Orders />

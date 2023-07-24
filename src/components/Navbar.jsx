@@ -1,31 +1,26 @@
 import { Link } from "react-router-dom";
-import Button from "./Button";
-import { useContext } from "react";
-import { ThemeContext } from "../App";
+import BtnLogin from "./buttons/BtnLogin";
 
-const Navbar = () => {
-   const { color, isDark, setTheme } = useContext(ThemeContext);
-
+const Navbar = ({ children }) => {
    return (
       <>
-         <nav className={`navbar-container shadow-sm-${color} navbar-${color}`}>
-            <div className="navbar-wrapper">
-               <div className="navbar-left">
-                  <div className="navbar-brand">
+         <nav className="navbar bg-neutral-200 drop-shadow-sm">
+            <div className="container mx-auto flex h-16 w-full bg-neutral-200 justify-between items-center">
+               <div className="navbar-left flex">
+                  <div className="navbar-brand mr-3">
                      <p>Ainurridho F&D</p>
                   </div>
-                  <div className={`navbar-group`}>
-                     <Link to="/" className={`navbar-link navbar-${color}`}>
-                        Menu
-                     </Link>
-                  </div>
+                  <Link to="/" className="hover:text-blue-500 duration-300">
+                     Menu
+                  </Link>
                </div>
                <div className="navbar-right">
-                  <div className="theme-toogle">{isDark ? <button onClick={() => setTheme("light")}>light</button> : <button onClick={() => setTheme("dark")}>dark</button>}</div>
-                  <Button action="Login" />
+                  <BtnLogin action="login" />
                </div>
             </div>
          </nav>
+
+         <div>{children}</div>
       </>
    );
 };
