@@ -14,11 +14,11 @@ const BtnOrder = ({ id, name, price, category, image }) => {
 
    return (
       <>
-         <button className="btn-minus" onClick={() => setCount(count - 1)}>
+         <button className="btn-minus bg-red-500 hover:bg-red-600 py-0.5 basis-1/5 w-full rounded-sm" onClick={() => setCount(count - 1)}>
             -
          </button>
-         <input type="number" disabled value={count} className="order-count" />
-         <button className="btn-plus" onClick={() => setCount(count + 1)}>
+         <input type="number" disabled value={count} style={{ borderWidth: "1px" }} className="order-count w-11/12 text-center text-sm border-neutral-200 rounded-sm" />
+         <button className="btn-plus bg-green-500 hover:bg-green-600 py-0.5 basis-1/5 w-full rounded-sm" onClick={() => setCount(count + 1)}>
             +
          </button>
       </>
