@@ -1,29 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import CustomerName from "./CustomerName";
 
 const Orders = () => {
-   const orderRedux = useSelector((state) => state.orders);
-   const [orders, setOrders] = useState([]);
+   const orders = useSelector((state) => state.orders.data);
    const [total, setTotal] = useState(0);
-
-   useEffect(() => {
-      if (orderRedux?.id) {
-         const { id, name, price, count, category, image } = orderRedux;
-
-         if (orders.length > 0) {
-            const order = orders.find((o) => o.id === id);
-
-            if (order) {
-               order.count = count;
-            } else {
-               setOrders((value) => [...value, { id, name, price, count, category, image }]);
-            }
-         } else {
-            setOrders((value) => [...value, { id, name, price, count, category, image }]);
-         }
-         setTotal(total + price);
-      }
-   }, [orderRedux]);
+   const [csName, setCsName] = useState(false);
 
    const UIOrder = orders.map((order, i) => {
       return (
@@ -41,20 +23,29 @@ const Orders = () => {
    });
 
    return (
-      <section style={{ flexBasis: "28%" }} className="order ">
-         <div className="order-items rounded-md border-2 px-2">
-            <h3 className="order-header text-lg mt-2">Keranjang Belanja</h3>
-            <hr className="mb-3" />
-            {UIOrder}
-            <hr className="mt-3" />
-            <div className="order-total">
-               <p className="my-1">Harga : {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total)}</p>
-               <button className="bg-indigo-500 hover:bg-indigo-600 block w-full rounded-md text-center p-1 text-white mb-2" onClick={() => window.location.reload()}>
-                  Bayar Sekarang
-               </button>
+      <>
+         <section style={{ flexBasis: "28%" }} className="order ">
+            <div className="order-items rounded-md border-2 px-2">
+               <h3 className="order-header text-lg mt-2">Keranjang Belanja</h3>
+               <hr className="mb-3" />
+               {UIOrder}
+               <hr className="mt-3" />
+               <div className="order-total">
+                  <p className="my-1">Harga : {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total)}</p>
+                  {orders.length > 0 ? (
+                     <button className="bg-indigo-500 hover:bg-indigo-600 block w-full rounded-md text-center p-1 text-white mb-2 shadow-sm shadow-indigo-600" onClick={() => setCsName(!csName)}>
+                        Pesan Sekarang
+                     </button>
+                  ) : (
+                     <button className="bg-neutral-400 block w-full rounded-md text-center p-1 text-white mb-2" disabled>
+                        Pesan Sekarang
+                     </button>
+                  )}
+               </div>
             </div>
-         </div>
-      </section>
+         </section>
+         {csName && <CustomerName flex={"flex"} setCsName={setCsName} />}
+      </>
    );
 };
 

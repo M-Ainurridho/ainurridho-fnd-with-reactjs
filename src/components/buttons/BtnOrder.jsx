@@ -1,14 +1,30 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { orderChange } from "../../redux/reducers";
+import { useDispatch, useSelector } from "react-redux";
+import { createNewOrder, overwriteData } from "../../redux/reducers";
 
 const BtnOrder = ({ id, name, price, category, image }) => {
    const [count, setCount] = useState(0);
    const dispatch = useDispatch();
+   const orders = useSelector((state) => state.orders.data);
 
    useEffect(() => {
-      if (count !== 0) {
-         dispatch(orderChange({ id, name, price, count, category, image }));
+      if (count < 0) {
+         setCount(0);
+      } else if (count === 0) {
+         const find = orders.find((o) => o.id === id);
+         if (find) {
+            const filterOrders = orders.filter((o) => o.id !== id);
+            dispatch(overwriteData(filterOrders));
+         }
+      } else {
+         const find = orders.find((o) => o.id === id);
+
+         if (find) {
+            const filterOrders = orders.filter((o) => o.id !== id);
+            dispatch(overwriteData(filterOrders));
+         }
+
+         dispatch(createNewOrder({ id, name, price, count, category, image }));
       }
    }, [count]);
 
