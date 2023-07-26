@@ -9,3 +9,5 @@ Terimakasih
 #javascript
 #frontendweb
 #reacjs
+#redux
+#react-redux
