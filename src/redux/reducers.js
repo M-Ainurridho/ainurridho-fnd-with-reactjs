@@ -15,24 +15,18 @@ export const menuReducer = createSlice({
 export const ordersReducer = createSlice({
    name: "order",
    initialState: {
-      id: 0,
-      name: "",
-      price: 0,
-      count: 0,
-      category: "",
-      image: "",
+      data: [],
    },
    reducers: {
-      orderChange: (state, action) => {
-         state.id = action.payload.id;
-         state.name = action.payload.name;
-         state.price = action.payload.price;
-         state.count = action.payload.count;
-         state.category = action.payload.category;
-         state.image = action.payload.image;
+      createNewOrder: (state, action) => {
+         state.data = [...state.data, action.payload];
+      },
+
+      overwriteData: (action) => {
+         state.data = action.payload;
       },
    },
 });
 
 export const { changeMenu } = menuReducer.actions;
-export const { orderChange } = ordersReducer.actions;
+export const { createNewOrder, overwriteData } = ordersReducer.actions;
