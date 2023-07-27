@@ -17,6 +17,7 @@ export const ordersReducer = createSlice({
    initialState: {
       customer: "",
       data: [],
+      total: 0,
    },
    reducers: {
       createNewOrder: (state, action) => {
@@ -27,6 +28,14 @@ export const ordersReducer = createSlice({
          state.data = action.payload;
       },
 
+      minusPrice: (state, action) => {
+         state.total -= action.payload;
+      },
+
+      plusPrice: (state, action) => {
+         state.total += action.payload;
+      },
+
       customerInfo: (state, action) => {
          state.customer = action.payload;
       },
@@ -34,9 +43,10 @@ export const ordersReducer = createSlice({
       clearOrders: (state) => {
          state.data = [];
          state.customer = "";
+         state.total = 0;
       },
    },
 });
 
 export const { changeMenu } = menuReducer.actions;
-export const { createNewOrder, overwriteData, customerInfo, clearOrders } = ordersReducer.actions;
+export const { createNewOrder, overwriteData, plusPrice, minusPrice, customerInfo, clearOrders } = ordersReducer.actions;

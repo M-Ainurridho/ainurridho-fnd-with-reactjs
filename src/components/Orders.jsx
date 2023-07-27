@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import CustomerName from "./CustomerName";
 
 const Orders = () => {
-   const orders = useSelector((state) => state.orders.data);
-   const [total, setTotal] = useState(0);
+   const orders = useSelector((state) => state.orders);
    const [csName, setCsName] = useState(false);
 
-   const UIOrder = orders.map((order, i) => {
+   const UIOrder = orders.data.map((order, i) => {
       return (
          <div className="order-card flex mt-2 text-xs items-center border-2 border-neutral-200 p-2 rounded-md" key={i}>
             <div className="order-count basis-auto ">{order.count}x</div>
@@ -31,8 +30,8 @@ const Orders = () => {
                {UIOrder}
                <hr className="mt-3" />
                <div className="order-total">
-                  <p className="my-1">Harga : {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(total)}</p>
-                  {orders.length > 0 ? (
+                  <p className="my-1">Total : {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(orders.total)}</p>
+                  {orders.data.length > 0 ? (
                      <button className="bg-indigo-500 hover:bg-indigo-600 block w-full rounded-md text-center p-1 text-white mb-2 shadow-sm shadow-indigo-600" onClick={() => setCsName(!csName)}>
                         Pesan Sekarang
                      </button>
