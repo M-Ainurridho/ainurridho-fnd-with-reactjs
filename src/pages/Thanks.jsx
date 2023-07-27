@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import ImgThanks from "../assets/images/icons/thank-you.png";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Thanks = () => {
+   const nama = useSelector((state) => state.orders.customer);
+   document.title = `Terima Kasih ${nama.nama}`;
    const navigate = useNavigate();
 
    useEffect(() => {

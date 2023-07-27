@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { clearOrders } from "../redux/reducers";
 
 const Menu = () => {
+   document.title = "Menu | Ainurridho FnD"
    const dispatch = useDispatch();
 
    useEffect(() => {

@@ -15,7 +15,7 @@ export const menuReducer = createSlice({
 export const ordersReducer = createSlice({
    name: "orders",
    initialState: {
-      customer: "",
+      customer: {},
       data: [],
       total: 0,
    },
