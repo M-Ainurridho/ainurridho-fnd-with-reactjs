@@ -8,7 +8,7 @@ const Orders = () => {
 
    const UIOrder = orders.data.map((order, i) => {
       return (
-         <div className="order-card flex mt-2 text-xs items-center border-2 border-neutral-200 p-2 rounded-md" key={i}>
+         <div className="order-card flex mt-2 text-sm items-center border-2 border-neutral-200 p-2 rounded-md" key={i}>
             <div className="order-count basis-auto ">{order.count}x</div>
             <div className="order-item flex basis-3/5 items-center">
                <div className="order-img w-2/4 overflow-hidden ">
